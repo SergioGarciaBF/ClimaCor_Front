@@ -1,4 +1,5 @@
 import {StyleSheet, Text, View, Image } from "react-native";
+import {Colors} from './../../constants/Colors';
 
 export default function HomeFailed() {
     return (
@@ -22,20 +23,21 @@ export default function HomeFailed() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#84b6f4',
+      backgroundColor: Colors.blue,
       alignItems: 'center',
       justifyContent: 'center',
       color: '#2C2F32'
     },
     table:{
         fontFamily: 'Roboto',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: Colors.white,
         borderRadius: 12,
         padding: 10,
         margin: 16,
         width: 320,
     },
     secondaryTitle: {
+        color: Colors.colorText,
         fontFamily: 'Roboto',
         fontSize: 16,
         fontWeight: 'bold'
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'green'
     },
     mainTitle: {
-      color: '#2C2F32',
+      color: Colors.colorText,
       fontWeight: 'bold',
       marginTop: 12,
       fontSize: 24

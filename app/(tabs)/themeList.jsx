@@ -1,4 +1,5 @@
 import {StyleSheet, Text, View, Image, Button } from "react-native";
+import {Colors} from './../../constants/Colors';
 
 export default function ThemeList() {
     return (
@@ -46,7 +47,7 @@ export default function ThemeList() {
                 </View> 
             </View>
             <View style={styles.button}>
-                <Text>+ Criar novo tema</Text> 
+                <Text>Criar novo tema</Text> 
             </View>
         </View>
       );
@@ -56,14 +57,15 @@ export default function ThemeList() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#84b6f4',
+      backgroundColor: Colors.blue,
       alignItems: 'center',
       justifyContent: 'center',
       color: '#2C2F32'
     },
     button: {
+        color: Colors.colorText,
         fontFamily: 'Roboto',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: Colors.white,
         borderRadius: 12,
         padding: 10,
         margin: 16,
@@ -86,13 +88,14 @@ const styles = StyleSheet.create({
     },
     table:{
         fontFamily: 'Roboto',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: Colors.white,
         borderRadius: 12,
         padding: 10,
         margin: 16,
         width: 320,
     },
     secondaryTitle: {
+        color: Colors.colorText,
         fontFamily: 'Roboto',
         fontSize: 16,
         fontWeight: 'bold'
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'green'
     },
     mainTitle: {
-      color: '#2C2F32',
+      color: Colors.colorText,
       fontWeight: 'bold',
       marginTop: 12,
       fontSize: 24,
