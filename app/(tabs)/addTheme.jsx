@@ -1,13 +1,11 @@
 import {StyleSheet, Text, View, Image, Button, TextInput } from "react-native";
 import {Colors} from './../../constants/Colors';
-import {countries} from './../../constants/Climate';
-{/**import { TextInput } from "react-native-gesture-handler";*/}
-import { StatusBar } from "expo-status-bar";
+import {climates} from '../../constants/Climates';
 import Dropdown from './../../components/Dropdown';
 
-const formattedCountries = countries.map(c=>({
+const formattedClimates = climates.map(c=>({
     value:c.label, 
-    label: `${c.flag} ${c.label}`, 
+    label: `${c.label}`, 
 }))
 
 export default function addTheme() {
@@ -16,13 +14,13 @@ export default function addTheme() {
             <View>
                 <Text style={styles.mainTitle}>Novo tema</Text>
             </View>
-            {/** Campo de input */}
+
             <View> 
                 <TextInput placeholder='Nome do tema' /> 
                 <TextInput style={styles.input} />
             </View>
 
-            <Dropdown data={formattedCountries} onChange={console.log} placeholder='Select countries'  />
+            <Dropdown data={formattedClimates} onChange={console.log} placeholder='Condição climática'  />
 
             <View style={styles.button}>
                 <Text>Adicionar outra cor</Text>
@@ -30,7 +28,6 @@ export default function addTheme() {
             <View style={styles.button}>
                 <Text>Salvar tema</Text>
             </View>
-
             
         </View>
     );
