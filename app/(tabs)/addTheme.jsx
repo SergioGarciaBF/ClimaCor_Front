@@ -2,6 +2,7 @@ import {StyleSheet, Text, View, Image, Button, TextInput } from "react-native";
 import {Colors} from './../../constants/Colors';
 import {climates} from '../../constants/Climates';
 import Dropdown from './../../components/Dropdown';
+{/**import ColorPicker from './../../components/ColorPicker'; */}
 
 const formattedClimates = climates.map(c=>({
     value:c.label, 
