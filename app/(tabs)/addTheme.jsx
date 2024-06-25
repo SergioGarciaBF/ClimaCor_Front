@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, Image, Button, TextInput } from "react-native";
 import {Colors} from './../../constants/Colors';
 import {climates} from '../../constants/Climates';
-import ColorPicker from './../../components/ColorPicker'; 
+//import ColorPicker from './../../components/ColorPicker'; 
 import {Animated, ScrollView} from 'react-native';
 import React, {useRef} from 'react';
 

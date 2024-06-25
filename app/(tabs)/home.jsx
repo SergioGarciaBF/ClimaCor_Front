@@ -1,9 +1,8 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Colors } from "./../../constants/Colors";
-import * as Location from "expo-location";
 import { useEffect, useState } from "react";
 import { getWeather, changeColor, switchLamp } from "../../scripts/api";
-import { identifyGroup} from "../../scripts/functions";
+import { identifyGroup } from "../../scripts/functions";
 import activeTheme from "../../configs/activeTheme.json";
 
 export default function Home() {
@@ -19,11 +18,9 @@ export default function Home() {
     sunset: "",
     moon_phase: "",
   });
-
-  useEffect(() => {
-    const intervalId = setInterval(() => { 
-      console.log("Clima atualizado!");
-      getWeather("Fortaleza,CE")
+  const updateInfo = () => {
+    console.log("Clima atualizado!");
+    getWeather("Fortaleza,CE")
       .then((response) => response.json())
       .then((body) => {
         setWeather({
@@ -36,27 +33,29 @@ export default function Home() {
           img_id: body.results.img_id,
           sunrise: body.results.sunrise,
           sunset: body.results.sunset,
-          moon_phase: body.results.moon_phase
+          moon_phase: body.results.moon_phase,
+          condition_slug: body.results.condition_slug,
         });
+        console.log(body);
+        const color =
+          activeTheme.colors[
+            identifyGroup(Number(body.results.condition_code))
+          ];
+        switchLamp(true);
+        changeColor(color);
+        //console.log(JSON.stringify(weather), identifyGroup(Number(weather.condition_code)))
       });
-      const color = activeTheme.colors[identifyGroup(Number(weather.condition_code))];
-      console.log(identifyGroup(Number(weather.condition_code)), color)
-      switchLamp(true)
-      changeColor(color)
-
-    }, 5000)
-  
-    return () => clearInterval(intervalId); 
-  }, [ ]);
-  
+    // const color = activeTheme.colors[identifyGroup(Number(weather.condition_code))];
+    // switchLamp(true);
+    // changeColor(color);
+  };
   useEffect(() => {
-    const intervalId = setInterval(() => { 
-      console.log("Cor atualizada");
-    }, 5000)
-  
-    return () => clearInterval(intervalId); 
-   
-  }, [ ]);
+    updateInfo();
+    const intervalId = setInterval(updateInfo, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <View style={styles.container}>
       <View>
@@ -64,6 +63,10 @@ export default function Home() {
       </View>
       <View>
         <Text style={styles.logo}>Placeholder</Text>
+        {/* <Image
+          style={styles.logo}
+          source={require("../../assets/images/hgWeather/"+ body.results.condition_slug + ".png")}
+        /> */}
       </View>
       <View style={styles.table}>
         <Text style={styles.secondaryTitle}>{weather.city}</Text>

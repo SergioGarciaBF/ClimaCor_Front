@@ -28,7 +28,7 @@ export const switchLamp = async (value) => {
 
 //Mudar cor da lâmpada
 export const changeColor = async (value) => {
-  console.log(JSON.stringify(value))
+  //console.log(JSON.stringify(value))
   try {
     const response = await api.post(
       `/tuya/change_color/${JSON.stringify(value)}`
